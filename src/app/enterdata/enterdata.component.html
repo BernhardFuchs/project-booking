@@ -1,0 +1,26 @@
+<p>
+  Add Project hours for today:
+</p>
+
+<form #sheetRowForm="ngForm" (ngSubmit)="submitEntry(sheetRowForm)">
+  
+  <div class="form-group">
+    <label class="control-label">Day</label>
+    <input #day="ngModel" name="day" class="form-control" [(ngModel)] = "entry.day">
+  </div>
+  
+  <div class="form-group">
+    <label class="control-label">Project</label>
+    <input #project="ngModel" name="project" class="form-control" [(ngModel)] = "entry.project">
+  </div>
+  
+  <div class="form-group">
+    <label class="control-label">Hours</label>
+    <input #hours="ngModel" name="hours" class="form-control" [(ngModel)] = "entry.hours">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Add</button>
+</form>
+
+
+

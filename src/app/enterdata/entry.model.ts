@@ -1,10 +1,10 @@
 export class Entry {
-  public date: string;
+  public day: number;
   public project: string;
   public hours: number;
 
-  constructor(date: string, project:string, hours:number) {
-    this.date = date;
+  constructor(day: number, project: string, hours: number) {
+    this.day = day;
     this.project = project;
     this.hours = hours;
   }
