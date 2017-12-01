@@ -4,10 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { DataconfigComponent } from './dataconfig/dataconfig.component';
+import { SpreadsheetComponent } from './spreadsheet/spreadsheet.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DataconfigComponent,
+    SpreadsheetComponent
   ],
   imports: [
     BrowserModule,
