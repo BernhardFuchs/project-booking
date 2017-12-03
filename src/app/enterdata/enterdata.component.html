@@ -2,25 +2,40 @@
   Add Project hours for today:
 </p>
 
-<form #sheetRowForm="ngForm" (ngSubmit)="submitEntry(sheetRowForm)">
+<form #addRowForm="ngForm" (ngSubmit)="submitEntry(addRowForm)"
+class="container-fluid">
   
-  <div class="form-group">
+  <div class="row">
     <label class="control-label">Day</label>
-    <input #day="ngModel" name="day" class="form-control" [(ngModel)] = "entry.day">
-  </div>
+    <input #day="ngModel" name="day" class="form-control" type="number" [(ngModel)] = currentRow.day>
   
-  <div class="form-group">
-    <label class="control-label">Project</label>
-    <input #project="ngModel" name="project" class="form-control" [(ngModel)] = "entry.project">
-  </div>
-  
-  <div class="form-group">
     <label class="control-label">Hours</label>
-    <input #hours="ngModel" name="hours" class="form-control" [(ngModel)] = "entry.hours">
+    <input #hours="ngModel" name="hours" class="form-control" type="number" [(ngModel)] = currentRow.hours>
+
+    <label class="control-label">Project</label>
+    <input #project="ngModel" name="project" class="form-control" type="text" [(ngModel)] = currentRow.project>
+
+    <button type="submit" class="btn btn-primary">Add</button>
   </div>
   
-  <button type="submit" class="btn btn-primary">Add</button>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="list-group-item clearfix" *ngFor="let entry of entries">
+        <div>
+            <label>Day:</label><input type="number" value="{{ entry.day }}">
+            <label>Hours:</label><input type="number" value="{{ entry.hours }}">
+            <label>Project:</label><input type="text" value="{{ entry.project }}">
+            <button>Update Entry</button>
+          </div>
+        </div>
+    </div>
+  </div>
+
 </form>
+
+
+
+
 
 
 

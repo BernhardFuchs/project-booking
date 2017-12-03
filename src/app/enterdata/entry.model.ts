@@ -1,11 +1,11 @@
 export class Entry {
   public day: number;
-  public project: string;
   public hours: number;
+  public project: string;
 
-  constructor(day: number, project: string, hours: number) {
+  constructor(day: number, hours: number, project: string) {
     this.day = day;
-    this.project = project;
     this.hours = hours;
+    this.project = project;
   }
 }
