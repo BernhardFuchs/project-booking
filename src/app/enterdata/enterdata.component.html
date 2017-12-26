@@ -2,22 +2,42 @@
   Add Project hours for today:
 </p>
 
-<form #addRowForm="ngForm" (ngSubmit)="submitEntry(addRowForm)"
-class="container-fluid">
+<form novalidate [formGroup]="this.entryForm">
 
-  <div class="row">
-    <label class="control-label">Day</label>
-    <input #day="ngModel" name="day" class="form-control" type="number" [(ngModel)] = currentRow.day>
+  <fieldset>
+    <div class="form-group">
+      <label class="control-label">Day</label>
+      <input name="day" class="form-control" type="number">
+    </div>
+  </fieldset>
 
-    <label class="control-label">Hours</label>
-    <input #hours="ngModel" name="hours" class="form-control" type="number" [(ngModel)] = currentRow.hours>
+  <fieldset>
+    <div class="form-group">
+      <label class="control-label">Hours</label>
+      <input name="hours" class="form-control" type="number">
+    </div>
+  </fieldset>
 
-    <label class="control-label">Project</label>
-    <input #project="ngModel" name="project" class="form-control" type="text" [(ngModel)] = currentRow.project>
+  <fieldset>
+    <div class="form-group">
+      <label class="control-label">Project</label>
+      <select class="form-control">
+        <option value="">Please select a project</option>
+        <option *ngFor="let project of projects"
+                [value]="project">
+                {{ project }}
+        </option>
+      </select>
+    </div>
+  </fieldset>
 
-    <button type="submit" class="btn btn-primary">Add</button>
-  </div>
+  <button type="submit" class="btn btn-primary">Add</button>
 
+  <pre>{{entryForm.value | json}}</pre>
+</form>
+
+
+<!--
   <div class="row">
     <div class="col-xs-12">
       <div class="list-group-item clearfix" *ngFor="let entry of entries">
@@ -32,6 +52,7 @@ class="container-fluid">
   </div>
 
 </form>
+-->
 
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Entry } from 'app/enterdata/entry.model';
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-enterdata',
@@ -8,22 +9,32 @@ import { Entry } from 'app/enterdata/entry.model';
 })
 export class EnterdataComponent implements OnInit {
 
-  currentRow: Entry;
+  entryForm: FormGroup;
+
   entries: Entry[] = [
     //new Entry(2, 12, 'Project b')
+  ];
+
+  projects: string[] = [
+    'Project A',
+    'Project B'
   ];
 
   constructor() { }
 
   ngOnInit() {
-    this.currentRow = new Entry(0, 0, "");
+    this.entryForm = new FormGroup({
+      day: new FormControl(),
+      hours: new FormControl(),
+      project: new FormControl()
+    });
   }
 
   submitEntry(entryForm) {
-    console.log('submit received!!!');
+    /*console.log('submit received!!!');
     this.entries.push(this.currentRow);
     console.log(this.currentRow);
     console.log(this.entries);
-    this.currentRow = new Entry(0, 0, "");
+    this.currentRow = new Entry(0, 0, "");*/
   }
 }
