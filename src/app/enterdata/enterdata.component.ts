@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Entry } from 'app/enterdata/entry.model';
-import { ViewChild } from '@angular/core/src/metadata/di';
-import { NgForm } from '@angular/forms/src/directives/ng_form';
 
 @Component({
   selector: 'app-enterdata',
@@ -14,8 +12,6 @@ export class EnterdataComponent implements OnInit {
   entries: Entry[] = [
     //new Entry(2, 12, 'Project b')
   ];
-
-  @ViewChild('addRowForm') form: NgForm;
 
   constructor() { }
 

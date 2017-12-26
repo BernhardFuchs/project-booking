@@ -4,11 +4,11 @@
 
 <form #addRowForm="ngForm" (ngSubmit)="submitEntry(addRowForm)"
 class="container-fluid">
-  
+
   <div class="row">
     <label class="control-label">Day</label>
     <input #day="ngModel" name="day" class="form-control" type="number" [(ngModel)] = currentRow.day>
-  
+
     <label class="control-label">Hours</label>
     <input #hours="ngModel" name="hours" class="form-control" type="number" [(ngModel)] = currentRow.hours>
 
@@ -17,7 +17,7 @@ class="container-fluid">
 
     <button type="submit" class="btn btn-primary">Add</button>
   </div>
-  
+
   <div class="row">
     <div class="col-xs-12">
       <div class="list-group-item clearfix" *ngFor="let entry of entries">
