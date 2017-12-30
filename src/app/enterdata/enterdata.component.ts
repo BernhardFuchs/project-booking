@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Entry } from 'app/enterdata/entry.model';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-enterdata',
@@ -10,6 +10,9 @@ import {FormControl, FormGroup} from "@angular/forms";
 export class EnterdataComponent implements OnInit {
 
   entryForm: FormGroup;
+  day: FormControl;
+  hours: FormControl;
+  project: FormControl;
 
   entries: Entry[] = [
     //new Entry(2, 12, 'Project b')
@@ -23,10 +26,31 @@ export class EnterdataComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.createFormControls();
+    this.createForm();
+  }
+
+  createFormControls() {
+    this.day = new FormControl('', [
+      // TODO: add validator to avoid decimal numbers
+      Validators.required,
+      Validators.min(1),
+      Validators.max(31)
+    ]);
+
+    this.hours = new FormControl('', [
+      Validators.required,
+      Validators.min(1)
+    ]);
+
+    this.project = new FormControl('', Validators.required);
+  }
+
+  createForm() {
     this.entryForm = new FormGroup({
-      day: new FormControl(),
-      hours: new FormControl(),
-      project: new FormControl()
+      day: this.day,
+      hours: this.hours,
+      project: this.project
     });
   }
 

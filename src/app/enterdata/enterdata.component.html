@@ -4,32 +4,34 @@
 
 <form novalidate [formGroup]="this.entryForm">
 
-  <fieldset>
-    <div class="form-group">
-      <label class="control-label">Day</label>
-      <input name="day" class="form-control" type="number">
-    </div>
-  </fieldset>
+  <div class="input-group"
+    [ngClass]="{
+      'has-success': day.valid && (day.dirty || day.touched),
+      'has-danger': day.invalid
+    }">
+    <span class="input-group-addon" id="basic-addon1">Day</span>
+    <input class="form-control" type="number" formControlName="day">
+  </div>
 
-  <fieldset>
-    <div class="form-group">
-      <label class="control-label">Hours</label>
-      <input name="hours" class="form-control" type="number">
-    </div>
-  </fieldset>
+  <div class="input-group"
+     [ngClass]="{
+      'has-success': hours.valid && (hours.dirty || hours.touched),
+      'has-danger': hours.invalid
+    }">
+    <span class="input-group-addon" id="basic-addon2">Hours</span>
+    <input class="form-control" type="number" formControlName="hours">
+  </div>
 
-  <fieldset>
-    <div class="form-group">
-      <label class="control-label">Project</label>
-      <select class="form-control">
-        <option value="">Please select a project</option>
-        <option *ngFor="let project of projects"
-                [value]="project">
-                {{ project }}
-        </option>
-      </select>
-    </div>
-  </fieldset>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon3">Project</span>
+    <select class="form-control" formControlName="project">
+      <option value="">Please select a project</option>
+      <option *ngFor="let project of projects"
+              [value]="project">
+              {{ project }}
+      </option>
+    </select>
+  </div>
 
   <button type="submit" class="btn btn-primary">Add</button>
 
