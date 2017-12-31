@@ -1,4 +1,4 @@
-export class Entry {
+export class EntryData {
   public day: number;
   public hours: number;
   public project: string;
