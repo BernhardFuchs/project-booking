@@ -2,38 +2,48 @@
   Add Project hours for today:
 </p>
 
-<form novalidate [formGroup]="this.entryForm">
+<form novalidate [formGroup]="this.entryForm" (ngSubmit)="onSubmit()">
 
-  <div class="input-group"
-    [ngClass]="{
-      'has-success': day.valid && (day.dirty || day.touched),
-      'has-danger': day.invalid
-    }">
-    <span class="input-group-addon" id="basic-addon1">Day</span>
-    <input class="form-control" type="number" formControlName="day">
+  <div class="row">
+    <div class="col-lg-1">
+      <div class="input-group"
+        [ngClass]="{
+          'has-success': day.valid && (day.dirty || day.touched),
+          'has-danger': day.invalid
+        }">
+        <span class="input-group-addon" id="basic-addon1">Day</span>
+        <input class="form-control" type="number" formControlName="day">
+      </div>
+    </div>
+
+    <div class="col-lg-2">
+      <div class="input-group"
+         [ngClass]="{
+          'has-success': hours.valid && (hours.dirty || hours.touched),
+          'has-danger': hours.invalid
+        }">
+        <span class="input-group-addon" id="basic-addon2">Hours</span>
+        <input class="form-control" type="number" formControlName="hours">
+      </div>
+    </div>
+
+    <div class="col-lg-3">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">Project</span>
+        <select class="form-control" formControlName="project">
+          <option value="">Please select a project</option>
+          <option *ngFor="let project of projects"
+                  [value]="project">
+                  {{ project }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="input-group col-lg-2">
+      <button type="submit" class="btn btn-primary">Add</button>
+    </div>
   </div>
-
-  <div class="input-group"
-     [ngClass]="{
-      'has-success': hours.valid && (hours.dirty || hours.touched),
-      'has-danger': hours.invalid
-    }">
-    <span class="input-group-addon" id="basic-addon2">Hours</span>
-    <input class="form-control" type="number" formControlName="hours">
-  </div>
-
-  <div class="input-group">
-    <span class="input-group-addon" id="basic-addon3">Project</span>
-    <select class="form-control" formControlName="project">
-      <option value="">Please select a project</option>
-      <option *ngFor="let project of projects"
-              [value]="project">
-              {{ project }}
-      </option>
-    </select>
-  </div>
-
-  <button type="submit" class="btn btn-primary">Add</button>
 
   <pre>{{entryForm.value | json}}</pre>
 </form>

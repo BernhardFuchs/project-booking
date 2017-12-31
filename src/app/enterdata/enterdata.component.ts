@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Entry } from 'app/enterdata/entry.model';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
@@ -13,10 +12,6 @@ export class EnterdataComponent implements OnInit {
   day: FormControl;
   hours: FormControl;
   project: FormControl;
-
-  entries: Entry[] = [
-    //new Entry(2, 12, 'Project b')
-  ];
 
   projects: string[] = [
     'Project A',
@@ -54,11 +49,11 @@ export class EnterdataComponent implements OnInit {
     });
   }
 
-  submitEntry(entryForm) {
-    /*console.log('submit received!!!');
-    this.entries.push(this.currentRow);
-    console.log(this.currentRow);
-    console.log(this.entries);
-    this.currentRow = new Entry(0, 0, "");*/
+  onSubmit() {
+    if (this.entryForm.valid) {
+      console.log("Form submitted");
+      this.entryForm.reset();
+    }
   }
+
 }
