@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CreateSpreadsheetService} from "../create-spreadsheet.service";
-import {EntryData} from "./entry-data.model";
+import {CommonService} from "../common.service";
+import {ProjectData} from "./project-data.model";
 
 @Component({
   selector: 'app-enterdata',
-  templateUrl: './enterdata.component.html',
-  styleUrls: ['./enterdata.component.css'],
-  providers: [CreateSpreadsheetService]
+  templateUrl: './project-data.component.html',
+  styleUrls: ['./project-data.component.css'],
+  providers: [CommonService]
 })
-export class EnterdataComponent implements OnInit {
+export class ProjectDataComponent implements OnInit {
 
   entryForm: FormGroup;
   day: FormControl;
@@ -21,7 +21,7 @@ export class EnterdataComponent implements OnInit {
     'Project B'
   ];
 
-  constructor(private createSpreadsheetService: CreateSpreadsheetService) { }
+  constructor(private commonService: CommonService) { }
 
   ngOnInit() {
     this.createFormControls();
@@ -55,14 +55,14 @@ export class EnterdataComponent implements OnInit {
   onSubmit() {
     if (this.entryForm.valid) {
       let entryData = this.mapToModel(this.entryForm);
-      this.createSpreadsheetService.addEntry(entryData);
+      this.commonService.addEntry(entryData);
       console.log("Form submitted");
       this.entryForm.reset();
     }
   }
 
-  mapToModel(entryForm: FormGroup): EntryData {
-    return new EntryData(
+  mapToModel(entryForm: FormGroup): ProjectData {
+    return new ProjectData(
       entryForm.value.day,
       entryForm.value.hours,
       entryForm.value.project

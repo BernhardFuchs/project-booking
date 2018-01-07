@@ -3,17 +3,19 @@ import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { EnterdataComponent } from './enterdata/enterdata.component';
+import { ProjectDataComponent } from './enterdata/project-data.component';
+import {AngularWebStorageModule} from "angular-web-storage";
 
 @NgModule({
   declarations: [
     AppComponent,
-    EnterdataComponent
+    ProjectDataComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularWebStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

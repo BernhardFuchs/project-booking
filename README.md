@@ -1,6 +1,11 @@
 # ProjectBooking
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
+A webpage to collect project hours by Day, Hours and Project worked on and then creates a google spreadsheet out of them.  
+
+## Tools
+- Angular 5
+- [This](https://www.npmjs.com/package/google-spreadsheet) npm package to interact with Google Spreadsheet
+- The page should be run locally and not hosted
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
