@@ -1,4 +1,12 @@
+<app-project-data (add)="this.fetchEntries($event)"></app-project-data>
 <p>
   Entries:
 </p>
-<div>{{ this.entries }}</div>
+<table class="table">
+  <tr *ngFor="let entry of entries; let i = index">
+    <td class="col-lg-1">{{ entry.day }}</td>
+    <td class="col-lg-1">{{ entry.hours }}</td>
+    <td class="col-lg-3">{{ entry.project }}</td>
+    <td><button (click)="removeEntry(i)" class="btn btn-danger">Delete</button></td>
+  </tr>
+</table>

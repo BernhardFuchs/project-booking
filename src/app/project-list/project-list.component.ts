@@ -1,30 +1,34 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CommonService} from "../common.service";
-import {ProjectData} from "../enterdata/project-data.model";
+import {ProjectData} from "../project-data/project-data.model";
 
 @Component({
-  selector: 'app-display-bookings',
+  selector: 'app-project-list',
   templateUrl: './project-list.component.html',
   styleUrls: ['./project-list.component.css'],
-  providers: [CommonService],
   inputs: []
 })
-export class ProjectList implements OnInit {
+export class ProjectListComponent implements OnInit {
 
-  @Input() parentEntry: ProjectData;
   entries: ProjectData[] = [];
 
   constructor(private commonService: CommonService) {
-    console.log('Cosntructor');
-    /*commonService.getEntries().subscribe(
-      entry => {
-        console.log(entry);
-        this.entries.push(entry);
-      }
-    )*/
+
   }
 
   ngOnInit() {
+
+  }
+
+  fetchEntries() {
+    console.log('Fetching Data');
+    this.entries = this.commonService.fetchEntries();
+    console.log(this.entries);
+  }
+
+  removeEntry(index) {
+    this.commonService.removeItem(index);
+    this.fetchEntries();
   }
 
 }

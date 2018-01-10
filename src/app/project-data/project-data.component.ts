@@ -1,16 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CommonService} from "../common.service";
 import {ProjectData} from "./project-data.model";
 
 @Component({
-  selector: 'app-enterdata',
+  selector: 'app-project-data',
   templateUrl: './project-data.component.html',
   styleUrls: ['./project-data.component.css'],
   providers: [CommonService]
 })
 export class ProjectDataComponent implements OnInit {
 
+  @Output() add = new EventEmitter();
   entryForm: FormGroup;
   day: FormControl;
   hours: FormControl;
@@ -56,7 +57,7 @@ export class ProjectDataComponent implements OnInit {
     if (this.entryForm.valid) {
       let entryData = this.mapToModel(this.entryForm);
       this.commonService.addEntry(entryData);
-      console.log("Form submitted");
+      this.add.next();
       this.entryForm.reset();
     }
   }
