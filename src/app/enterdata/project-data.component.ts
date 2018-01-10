@@ -4,7 +4,7 @@ import {CommonService} from "../common.service";
 import {ProjectData} from "./project-data.model";
 
 @Component({
-  selector: 'app-enterdata',
+  selector: 'app-project-data',
   templateUrl: './project-data.component.html',
   styleUrls: ['./project-data.component.css'],
   providers: [CommonService]
@@ -20,6 +20,8 @@ export class ProjectDataComponent implements OnInit {
     'Project A',
     'Project B'
   ];
+
+  entries: ProjectData[] = [];
 
   constructor(private commonService: CommonService) { }
 
@@ -54,11 +56,17 @@ export class ProjectDataComponent implements OnInit {
 
   onSubmit() {
     if (this.entryForm.valid) {
-      let entryData = this.mapToModel(this.entryForm);
-      this.commonService.addEntry(entryData);
-      console.log("Form submitted");
+      this.entries.push(this.mapToModel(this.entryForm));
       this.entryForm.reset();
     }
+  }
+
+  removeEntry(i) {
+    this.entries.splice(i, 1);
+  }
+
+  createSpreadsheet() {
+    this.commonService.createSpreadsheet(this.entries);
   }
 
   mapToModel(entryForm: FormGroup): ProjectData {

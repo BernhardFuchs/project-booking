@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { ProjectDataComponent } from './enterdata/project-data.component';
-import {AngularWebStorageModule} from "angular-web-storage";
+import { ProjectDataComponent } from './enterdata/project-data.component'
+import {CommonService} from "./common.service";
 
 @NgModule({
   declarations: [
@@ -14,10 +14,11 @@ import {AngularWebStorageModule} from "angular-web-storage";
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
-    AngularWebStorageModule
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    CommonService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

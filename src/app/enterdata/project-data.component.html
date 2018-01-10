@@ -1,4 +1,4 @@
-<p>
+<p class="panel-heading">
   Add Project hours for today:
 </p>
 
@@ -47,3 +47,15 @@
 
   <pre>{{entryForm.value | json}}</pre>
 </form>
+
+<button (click)="createSpreadsheet()" class="btn btn-warning">Create Spreadsheet</button>
+
+<table class="table">
+  <tr *ngFor="let entry of entries; let i = index">
+    <td class="col-lg-1">{{ entry.day }}</td>
+    <td class="col-lg-1">{{ entry.hours }}</td>
+    <td class="col-lg-3">{{ entry.project }}</td>
+    <td><button (click)="removeEntry(i)" class="btn btn-danger">Delete</button></td>
+  </tr>
+</table>
+
